@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard - Profile</title>
+    <style>
+        /* General Styles */
+        body, html {
+            margin: 0;
+            padding: 0;
+            font-family: Arial, sans-serif;
+            background-color: #ecf0f1;
+        }
+
+        /* Navbar */
+        .navbar {
+            background-color: #2c3e50;
+            color: white;
+            padding: 15px;
+            text-align: center;
+            font-size: 18px;
+        }
+
+        /* Sidebar */
+        .container {
+            display: flex;
+            min-height: 100vh;
+        }
+
+        .sidebar {
+            width: 250px;
+            background-color: #34495e;
+            color: white;
+            padding: 20px;
+        }
+
+        .sidebar h2 {
+            text-align: center;
+        }
+
+        .sidebar ul {
+            list-style-type: none;
+            padding: 0;
+        }
+
+        .sidebar ul li {
+            margin: 15px 0;
+        }
+
+        .sidebar ul li a {
+            color: white;
+            text-decoration: none;
+            cursor: pointer;
+            display: block;
+            padding: 10px;
+            border-radius: 5px;
+        }
+
+        .sidebar ul li a:hover {
+            background-color: #1abc9c;
+        }
+
+        /* Main Content */
+        .main-content {
+            flex-grow: 1;
+            padding: 20px;
+            display: none;
+        }
+
+        #dashboard-section {
+            display: block;
+        }
+
+        /* Profile Section */
+        .profile-container {
+            background: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.1);
+            max-width: 400px;
+            margin: auto;
+            text-align: center;
+        }
+
+        .profile-picture {
+            width: 100px;
+            height: 100px;
+            border-radius: 50%;
+            object-fit: cover;
+        }
+
+        .profile-edit input {
+            width: 100%;
+            padding: 8px;
+            margin: 8px 0;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+
+        .edit-button, .save-button, .cancel-button {
+            background-color: #3498db;
+            color: white;
+            padding: 10px;
+            border: none;
+            cursor: pointer;
+            border-radius: 5px;
+            margin-top: 10px;
+        }
+
+        .cancel-button {
+            background-color: #e74c3c;
+        }
+
+        /* Responsive */
+        @media screen and (max-width: 768px) {
+            .container {
+                flex-direction: column;
+            }
+
+            .sidebar {
+                width: 100%;
+                text-align: center;
+            }
+
+            .sidebar ul {
+                display: flex;
+                flex-wrap: wrap;
+                justify-content: center;
+                padding: 10px;
+            }
+
+            .sidebar ul li {
+                margin: 5px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Navbar -->
+    <div class="navbar">User Dashboard</div>
+
+    <!-- Sidebar and Content -->
+    <div class="container">
+        <!-- Sidebar -->
+        <nav class="sidebar">
+            <h2>Dashboard</h2>
+            <ul>
+                <li><a href="dashboard.html">Overview</a></li>
+                                <li><a href="news.html">Manufacturers News</a></li>
+                <li><a href="#" onclick="showSection('profile')">Profile</a></li>
+                <li><a href="settings.html" >Settings</a></li>
+                <li><a href="#">Logout</a></li>
+            </ul>
+        </nav>
+
+        <!-- Dashboard -->
+        <div id="dashboard-section" class="main-content">
+            <h1>Welcome to Your Dashboard</h1>
+            <p>Select an option from the sidebar.</p>
+        </div>
+
+        <!-- Profile Section -->
+        <div id="profile-section" class="main-content">
+            <h1>Profile</h1>
+            <div class="profile-container">
+                <div class="profile-view">
+                    <img src="profile.jpg" alt="Profile Picture" class="profile-picture">
+                    <h2 id="profile-name">John Doe</h2>
+                    <p><strong>Email:</strong> <span id="profile-email">john@example.com</span></p>
+                    <p><strong>Phone:</strong> <span id="profile-phone">+1234567890</span></p>
+                    <button class="edit-button" onclick="toggleEditProfile()">Edit Profile</button>
+                </div>
+
+                <div class="profile-edit" style="display: none;">
+                    <h2>Edit Profile</h2>
+                    <form id="profile-form">
+                        <label for="name">Name:</label>
+                        <input type="text" id="edit-name" value="John Doe">
+
+                        <label for="email">Email:</label>
+                        <input type="email" id="edit-email" value="john@example.com">
+
+                        <label for="phone">Phone:</label>
+                        <input type="text" id="edit-phone" value="+1234567890">
+
+                        <button type="button" class="save-button" onclick="saveProfile()">Save</button>
+                        <button type="button" class="cancel-button" onclick="toggleEditProfile()">Cancel</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+
+        <!-- Settings Section -->
+        <div id="settings-section" class="main-content">
+            <h1>Settings</h1>
+            <p>Settings page coming soon...</p>
+        </div>
+    </div>
+
+    <script>
+        // Function to switch sections
+        function showSection(sectionId) {
+            document.querySelectorAll(".main-content").forEach(section => {
+                section.style.display = "none";
+            });
+            document.getElementById(sectionId + "-section").style.display = "block";
+        }
+
+        // Toggle Profile Edit Mode
+        function toggleEditProfile() {
+            document.querySelector(".profile-view").style.display = 
+                document.querySelector(".profile-view").style.display === "none" ? "block" : "none";
+            document.querySelector(".profile-edit").style.display = 
+                document.querySelector(".profile-edit").style.display === "none" ? "block" : "none";
+        }
+
+        // Save Profile Details
+        function saveProfile() {
+            document.getElementById("profile-name").textContent = document.getElementById("edit-name").value;
+            document.getElementById("profile-email").textContent = document.getElementById("edit-email").value;
+            document.getElementById("profile-phone").textContent = document.getElementById("edit-phone").value;
+
+            toggleEditProfile();
+        }
+    </script>
+
+</body>
+  </html>
+  

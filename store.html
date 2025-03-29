@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Medify Drug Store</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+</head>
+<body>
+
+    <!-- Navbar -->
+    <div class="navbar">
+        <h1>Drug Store</h1>
+        <div class="nav-links">
+            <a href="dashboard.html" class="dashboard-link">🏠 Back to Dashboard</a>
+            <a href="cart.html" class="cart-link">🛒 Cart (<span id="cart-count">0</span>)</a>
+        </div>
+    </div>
+
+    <!-- Store -->
+    <div class="container">
+        <h2>Available Drugs</h2>
+        <div class="drug-list">
+
+            <div class="drug-card" data-name="Painkillers" data-price="10.99">
+                <img src="painkillers.jpg" alt="Painkillers">
+                <div class="drug-name">Painkillers</div>
+                <div class="drug-price">$10.99</div>
+                <button class="add-to-cart">Add to Cart</button>
+            </div>
+
+            <div class="drug-card" data-name="Antibiotics" data-price="15.99">
+                <img src="antibiotics.jpg" alt="Antibiotics">
+                <div class="drug-name">Antibiotics</div>
+                <div class="drug-price">$15.99</div>
+                <button class="add-to-cart">Add to Cart</button>
+            </div>
+
+            <div class="drug-card" data-name="Cough Syrup" data-price="7.99">
+                <img src="cough-syrup.jpg" alt="Cough Syrup">
+                <div class="drug-name">Cough Syrup</div>
+                <div class="drug-price">$7.99</div>
+                <button class="add-to-cart">Add to Cart</button>
+            </div>
+
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+          </html>
+  

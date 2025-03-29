@@ -1,0 +1,341 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Medify - Healthcare Solution</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/css/bootstrap.min.css">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+        }
+        .hero {
+            background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), url('https://source.unsplash.com/1600x900/?medicine,hospital') no-repeat center;
+            background-size: cover;
+            color: white;
+            text-align: center;
+            padding: 100px 20px;
+        }
+        .hero h1 {
+            font-size: 3rem;
+        }
+        .signup-section {
+            padding: 60px 20px;
+            background: #f9f9f9;
+        }
+        .form-container {
+            background: white;
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+        }
+        .footer {
+            background: #333;
+            color: white;
+            text-align: center;
+            padding: 20px 10px;
+        }
+        
+.faq-item {
+  margin-bottom: 20px;
+}
+
+.faq-question {
+  font-weight: bold;
+  margin-bottom: 10px;
+}
+
+.faq-answer {
+  font-size: 16px;
+  color: #666;
+}
+    </style>
+</head>
+<body>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <h1>Welcome to Medify</h1>
+        <p>Your trusted decentralized medical solution.</p>
+        <a href="#signup" class="btn btn-primary btn-lg">Get Started</a>
+    </section>
+
+    <!-- Signup Forms Section -->
+    <section id="signup" class="signup-section">
+        <div class="container">
+            <h2 class="text-center mb-4">Signup for Medify</h2>
+            <ul class="nav nav-tabs justify-content-center" id="signupTabs">
+                <li class="nav-item">
+                    <a class="nav-link active" data-bs-toggle="tab" href="#user">User Signup</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" data-bs-toggle="tab" href="#distributor">Distributor Signup</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" data-bs-toggle="tab" href="#manufacturer">Manufacturer Signup</a>
+                </li>
+            </ul>
+
+            <div class="tab-content mt-4">
+
+<!-- User Signup -->
+<div class="tab-pane fade show active" id="user">
+  <div class="form-container">
+    <h4>User Signup</h4>
+    <form>
+      <!-- Personal Information -->
+      <div class="mb-3">
+        <label class="form-label">Full Name</label>
+        <input type="text" class="form-control" required>
+      </div>
+      <div class="mb-3">
+        <label class="form-label">Email</label>
+        <input type="email" class="form-control" required>
+      </div>
+      <div class="mb-3">
+        <label class="form-label">Phone Number</label>
+        <input type="text" class="form-control" required>
+      </div>
+      <div class="mb-3">
+        <label class="form-label">Date of Birth</label>
+        <input type="date" class="form-control" required>
+      </div>
+
+      <!-- Medical Information -->
+      <div class="mb-3">
+        <label class="form-label">Medical History</label>
+        <textarea class="form-control" required></textarea>
+      </div>
+      <div class="mb-3">
+        <label class="form-label">Current Medications</label>
+        <textarea class="form-control" required></textarea>
+      </div>
+
+      <!-- Identification Documents -->
+      <div class="mb-3">
+        <label class="form-label">Government-Issued ID</label>
+        <input type="file" class="form-control" required>
+      </div>
+      <div class="mb-3">
+        <label class="form-label">Proof of Address</label>
+        <input type="file" class="form-control" required>
+      </div>
+
+      <!-- Additional Documents (if applicable) -->
+      <div class="mb-3">
+        <label class="form-label">Prescription (if applicable)</label>
+        <input type="file" class="form-control">
+      </div>
+      <div class="mb-3">
+        <label class="form-label">Medical Certificate (if applicable)</label>
+        <input type="file" class="form-control">
+      </div>
+
+      <!-- Consent and Authorization -->
+      <div class="mb-3 form-check">
+        <input type="checkbox" class="form-check-input" required>
+        <label class="form-check-label">I agree to Medify's Terms of Service and Privacy Policy</label>
+      </div>
+      <button type="submit" class="btn btn-primary">Signup</button>
+    </form>
+  </div>
+</div>
+```
+<!-- Distributor Signup -->
+<div class="tab-pane fade" id="distributor">
+  <div class="form-container">
+    <h4>Distributor Signup</h4>
+    <form>
+      <div class="mb-3">
+        <label class="form-label">Company Name</label>
+        <input type="text" class="form-control" required>
+      </div>
+      <div class="mb-3">
+        <label class="form-label">Contact Person</label>
+        <input type="text" class="form-control" required>
+      </div>
+      <div class="mb-3">
+        <label class="form-label">Business Email</label>
+        <input type="email" class="form-control" required>
+      </div>
+      <h5>Document Requirements:</h5>
+      <div class="mb-3">
+        <label class="form-label">Business License</label>
+        <input type="file" class="form-control" required>
+      </div>
+      <div class="mb-3">
+        <label class="form-label">Tax Identification Number (TIN)</label>
+        <input type="file" class="form-control" required>
+      </div>
+      <div class="mb-3">
+        <label class="form-label">Certificate of Incorporation</label>
+        <input type="file" class="form-control" required>
+      </div>
+      <div class="mb-3">
+        <label class="form-label">Memorandum and Articles of Association</label>
+        <input type="file" class="form-control" required>
+      </div>
+      <div class="mb-3">
+        <label class="form-label">Pharmaceutical Distributor License</label>
+        <input type="file" class="form-control" required>
+      </div>
+      <div class="mb-3">
+        <label class="form-label">Good Distribution Practice (GDP) Certificate</label>
+        <input type="file" class="form-control" required>
+      </div>
+      <div class="mb-3">
+        <label class="form-label">Product Registration</label>
+        <input type="file" class="form-control" required>
+      </div>
+      <div class="mb-3">
+        <label class="form-label">Warehouse Layout Plan</label>
+        <input type="file" class="form-control" required>
+      </div>
+      <div class="mb-3">
+        <label class="form-label">Equipment Validation</label>
+        <input type="file" class="form-control" required>
+      </div>
+      <div class="mb-3">
+        <label class="form-label">Standard Operating Procedures (SOPs)</label>
+        <input type="file" class="form-control" required>
+      </div>
+      <div class="mb-3">
+        <label class="form-label">Quality Policy</label>
+        <input type="file" class="form-control" required>
+      </div>
+      <div class="mb-3">
+        <label class="form-label">Quality Manual</label>
+        <input type="file" class="form-control" required>
+      </div>
+      <div class="mb-3">
+        <label class="form-label">Stability Studies</label>
+        <input type="file" class="form-control" required>
+      </div>
+      <div class="mb-3">
+        <label class="form-label">Product Liability Insurance</label>
+        <input type="file" class="form-control" required>
+      </div>
+      <div class="mb-3">
+        <label class="form-label">Business Insurance</label>
+        <input type="file" class="form-control" required>
+      </div>
+      <div class="mb-3">
+        <label class="form-label">Financial Statements</label>
+        <input type="file" class="form-control" required>
+      </div>
+      <button type="submit" class="btn btn-primary">Signup</button>
+    </form>
+  </div>
+</div>
+
+<!-- Manufacturer Signup -->
+<div class="tab-pane fade" id="manufacturer">
+  <div class="form-container">
+    <h4>Manufacturer Signup</h4>
+    <form>
+      <div class="mb-3">
+        <label class="form-label">Company Name</label>
+        <input type="text" class="form-control" required>
+      </div>
+      <div class="mb-3">
+        <label class="form-label">Factory Location</label>
+        <input type="text" class="form-control" required>
+      </div>
+      <div class="mb-3">
+        <label class="form-label">Email</label>
+        <input type="email" class="form-control" required>
+      </div>
+      <div class="mb-3">
+        <label class="form-label">Password</label>
+        <input type="password" class="form-control" required>
+      </div>
+      <div class="mb-3">
+        <label class="form-label">Confirm Password</label>
+        <input type="password" class="form-control" required>
+      </div>
+      <h5>Document Requirements:</h5>
+      <div class="mb-3">
+        <label class="form-label">Certificate of Incorporation</label>
+        <input type="file" class="form-control" required>
+      </div>
+      <div class="mb-3">
+        <label class="form-label">Business License</label>
+        <input type="file" class="form-control" required>
+      </div>
+      <div class="mb-3">
+        <label class="form-label">Tax Identification Number (TIN)</label>
+        <input type="file" class="form-control" required>
+      </div>
+      <div class="mb-3">
+        <label class="form-label">Company Profile</label>
+        <input type="file" class="form-control" required>
+      </div>
+      <div class="mb-3">
+        <label class="form-label">Memorandum and Articles of Association</label>
+        <input type="file" class="form-control" required>
+      </div>
+      <div class="mb-3">
+        <label class="form-label">Board Resolution</label>
+        <input type="file" class="form-control" required>
+      </div>
+      <div class="mb-3">
+        <label class="form-label">Bank Statement</label>
+        <input type="file" class="form-control" required>
+      </div>
+      <div class="mb-3">
+        <label class="form-label">Audited Financial Statements</label>
+        <input type="file" class="form-control" required>
+      </div>
+      <div class="mb-3">
+        <label class="form-label">NAFDAC License</label>
+        <input type="file" class="form-control" required>
+      </div>
+      <button type="submit" class="btn btn-primary">Signup</button>
+    </form>
+  </div>
+</div>
+
+<a href="login.html"<button class="button" type="button">Login</button>a
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+
+<!-- FAQs Section -->
+<section class="container my-5">
+  <h2 class="text-center">Frequently Asked Questions</h2>
+  <div class="row text-center mt-4">
+    <div class="col-md-12">
+      <div class="faq-item">
+        <h4 class="faq-question">Q: Why Choose Medify?</h4>
+        <p class="faq-answer">Medify offers a range of benefits that make it the ideal choice for your medical needs.</p>
+      </div>
+      <div class="faq-item">
+        <h4 class="faq-question">Q: Is My Data Secure?</h4>
+        <p class="faq-answer">Yes, Medify uses decentralized data storage to ensure the security and privacy of your information.</p>
+      </div>
+      <div class="faq-item">
+        <h4 class="faq-question">Q: How Does Medify Ensure Authenticity of Medical Supplies?</h4>
+        <p class="faq-answer">Medify allows you to track and verify the authenticity of medical supplies throughout the supply chain.</p>
+      </div>
+      <div class="faq-item">
+        <h4 class="faq-question">Q: How Easy is it to Get Started with Medify?</h4>
+        <p class="faq-answer">Medify offers a seamless signup process for users, distributors, and manufacturers, making it easy to get started.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+```
+    <!-- Footer -->
+    <footer class="footer">
+        <p>© 2025 Medify | All Rights Reserved</p>
+    </footer>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/js/bootstrap.bundle.min.js"></script>
+</body>
+  </html>
+  

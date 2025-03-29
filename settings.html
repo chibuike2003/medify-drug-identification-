@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Settings Dashboard</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <style>
+        body {
+            background-color: #f8f9fa;
+            font-family: Arial, sans-serif;
+        }
+        .sidebar {
+            width: 250px;
+            background-color: #2c3e50;
+            color: white;
+            height: 100vh;
+            padding: 20px;
+            position: fixed;
+            transition: all 0.3s;
+        }
+        .sidebar h2 {
+            text-align: center;
+        }
+        .sidebar ul {
+            list-style: none;
+            padding: 0;
+        }
+        .sidebar ul li {
+            padding: 10px;
+            margin: 10px 0;
+            cursor: pointer;
+            background-color: #34495e;
+            border-radius: 5px;
+            text-align: center;
+        }
+        .sidebar ul li:hover {
+            background-color: #1abc9c;
+        }
+        .content {
+            margin-left: 270px;
+            padding: 20px;
+            width: 100%;
+        }
+        .profile-pic {
+            width: 100px;
+            height: 100px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 2px solid #3498db;
+        }
+        .mobile-menu {
+            display: none;
+            position: absolute;
+            top: 15px;
+            left: 15px;
+            font-size: 24px;
+            cursor: pointer;
+            background: #2c3e50;
+            color: white;
+            padding: 10px;
+            border-radius: 5px;
+        }
+        @media (max-width: 768px) {
+            .sidebar {
+                width: 100%;
+                height: auto;
+                position: relative;
+                display: none;
+            }
+            .content {
+                margin-left: 0;
+                width: 100%;
+            }
+            .mobile-menu {
+                display: block;
+            }
+        }
+    </style>
+</head>
+<body>
+
+<!-- Mobile Sidebar Button -->
+<div class="mobile-menu" onclick="toggleSidebar()">☰</div>
+<div class="content">
+    <!-- Back to Dashboard Button -->
+    <a href="dashboard.html" class="btn btn-outline-primary mb-3">
+        <i class="bi bi-arrow-left"></i> Back to Dashboard
+    </a>
+
+  
+</div>
+
+<div class="container-fluid">
+    <!-- Sidebar -->
+    <nav class="sidebar" id="sidebar">
+        <h2>Settings</h2>
+        <ul>
+            <li onclick="showSection('profile-settings')">Profile</li>
+            <li onclick="showSection('security-settings')">Security</li>
+            <li onclick="showSection('notifications')">Notifications</li>
+            <li onclick="showSection('preferences')">Preferences</li>
+            <li onclick="showSection('privacy-settings')">Privacy</li>
+            <li onclick="showSection('language-settings')">Language</li>
+            <li onclick="showSection('two-factor-settings')">2FA</li>
+        </ul>
+    </nav>
+
+    <!-- Main Content -->
+    <div class="content">
+        
+        <!-- Profile Settings -->
+        <div id="profile-settings" class="settings-section">
+            <h3>Profile Settings</h3>
+            <div class="card p-3">
+                <div class="text-center">
+                    <img id="profile-pic" src="https://via.placeholder.com/100" class="profile-pic">
+                    <input type="file" class="form-control mt-2" accept="image/*" onchange="updateProfilePic(event)">
+                </div>
+                <div class="mt-3">
+                    <label>Name:</label>
+                    <input type="text" class="form-control" value="John Doe">
+                </div>
+                <div class="mt-2">
+                    <label>Email:</label>
+                    <input type="email" class="form-control" value="johndoe@example.com">
+                </div>
+                <button class="btn btn-primary mt-3" onclick="showToast()">Save</button>
+            </div>
+        </div>
+
+        <!-- Security Settings -->
+        <div id="security-settings" class="settings-section" style="display: none;">
+            <h3>Security</h3>
+            <div class="card p-3">
+                <label>Change Password:</label>
+                <input type="password" class="form-control" placeholder="New Password">
+                <input type="password" class="form-control mt-2" placeholder="Confirm Password">
+                <button class="btn btn-danger mt-3" onclick="showToast()">Update Password</button>
+            </div>
+        </div>
+
+        <!-- Notifications -->
+        <div id="notifications" class="settings-section" style="display: none;">
+            <h3>Notifications</h3>
+            <div class="card p-3">
+                <div class="form-check">
+                    <input class="form-check-input" type="checkbox" checked>
+                    <label class="form-check-label">Email Notifications</label>
+                </div>
+                <button class="btn btn-success mt-3" onclick="showToast()">Save</button>
+            </div>
+        </div>
+
+        <!-- Privacy Settings -->
+        <div id="privacy-settings" class="settings-section" style="display: none;">
+            <h3>Privacy</h3>
+            <div class="card p-3">
+                <label>Profile Visibility:</label>
+                <select class="form-control">
+                    <option>Public</option>
+                    <option>Friends Only</option>
+                    <option>Private</option>
+                </select>
+                <button class="btn btn-primary mt-3" onclick="showToast()">Save</button>
+            </div>
+        </div>
+
+        <!-- Language Settings -->
+        <div id="language-settings" class="settings-section" style="display: none;">
+            <h3>Language</h3>
+            <div class="card p-3">
+                <select class="form-control">
+                    <option>English</option>
+                    <option>French</option>
+                    <option>Spanish</option>
+                </select>
+                <button class="btn btn-primary mt-3" onclick="showToast()">Save</button>
+            </div>
+        </div>
+
+        <!-- Two-Factor Authentication -->
+        <div id="two-factor-settings" class="settings-section" style="display: none;">
+            <h3>Two-Factor Authentication</h3>
+            <div class="card p-3">
+                <label>Enable 2FA:</label>
+                <input class="form-check-input" type="checkbox">
+                <button class="btn btn-warning mt-3" onclick="showToast()">Enable</button>
+            </div>
+        </div>
+
+    </div>
+</div>
+
+<!-- Toast Notification -->
+<div id="toast" style="display:none; position:fixed; bottom:20px; right:20px; background:green; color:white; padding:10px; border-radius:5px;">Settings Saved</div>
+
+<script>
+    function showSection(sectionId) {
+        document.querySelectorAll('.settings-section').forEach(section => section.style.display = 'none');
+        document.getElementById(sectionId).style.display = 'block';
+    }
+
+    function updateProfilePic(event) {
+        let reader = new FileReader();
+        reader.onload = function(e) {
+            document.getElementById('profile-pic').src = e.target.result;
+        };
+        reader.readAsDataURL(event.target.files[0]);
+    }
+
+    function toggleSidebar() {
+        let sidebar = document.getElementById('sidebar');
+        sidebar.style.display = sidebar.style.display === 'block' ? 'none' : 'block';
+    }
+
+    function showToast() {
+        let toast = document.getElementById('toast');
+        toast.style.display = 'block';
+        setTimeout(() => toast.style.display = 'none', 2000);
+    }
+</script>
+
+</body>
+  </html>
+                  

@@ -1,0 +1,124 @@
+<!<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Shopping Cart</title>
+</head>
+<body style="font-family: Arial, sans-serif; margin: 0; padding: 20px; background: #f4f4f4;">
+
+    <!-- Navbar -->
+    <div style="display: flex; justify-content: space-between; align-items: center; background: #007bff; padding: 15px; color: white;">
+        <h1>Your Cart</h1>
+        <a href="store.html" style="color: white; text-decoration: none; font-weight: bold;">🏪 Back to Store</a>
+    </div>
+
+    <!-- Cart Items -->
+    <div style="max-width: 800px; margin: 40px auto; padding: 20px; background: white; border-radius: 8px; box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);">
+        <h2 style="color: #007bff;">Cart Summary</h2>
+        <table style="width: 100%; border-collapse: collapse; text-align: left;">
+            <thead>
+                <tr style="background: #007bff; color: white;">
+                    <th style="padding: 10px;">Item</th>
+                    <th style="padding: 10px;">Price</th>
+                    <th style="padding: 10px;">Quantity</th>
+                    <th style="padding: 10px;">Subtotal</th>
+                    <th style="padding: 10px;">Remove</th>
+                </tr>
+            </thead>
+            <tbody id="cart-items"></tbody>
+        </table>
+
+        <h3>Total: $<span id="total-price">0.00</span></h3>
+        <button id="checkout-btn" style="padding: 10px 15px; font-size: 16px; font-weight: bold; border: none; background: #28a745; color: white; border-radius: 5px; cursor: pointer; margin-top: 10px;">
+            Checkout
+        </button>
+
+        <!-- Checkout Form (Initially Hidden) -->
+        <div id="checkout-form" style="display: none; margin-top: 20px; padding: 15px; border: 1px solid #ddd; border-radius: 5px; background: #f9f9f9;">
+            <h3>Checkout Form</h3>
+            <label>Full Name:</label>
+            <input type="text" id="name" style="width: 100%; padding: 8px; margin: 5px 0; border: 1px solid #ddd; border-radius: 5px;"><br>
+            
+            <label>Email:</label>
+            <input type="email" id="email" style="width: 100%; padding: 8px; margin: 5px 0; border: 1px solid #ddd; border-radius: 5px;"><br>
+
+            <label>Address:</label>
+            <textarea id="address" style="width: 100%; padding: 8px; margin: 5px 0; border: 1px solid #ddd; border-radius: 5px;"></textarea><br>
+
+            <button onclick="submitOrder()" style="padding: 10px 15px; font-size: 16px; font-weight: bold; border: none; background: #007bff; color: white; border-radius: 5px; cursor: pointer;">
+                Submit Order
+            </button>
+        </div>
+    </div>
+
+    <script>
+        // Sample cart items
+        let cart = [
+            { name: "Painkillers", price: 10.99, quantity: 1 },
+            { name: "Antibiotics", price: 15.99, quantity: 1 },
+            { name: "Cough Syrup", price: 7.99, quantity: 1 }
+        ];
+
+        function updateCart() {
+            let cartItemsContainer = document.getElementById("cart-items");
+            let totalPrice = 0;
+            cartItemsContainer.innerHTML = "";
+
+            cart.forEach((item, index) => {
+                let subtotal = (item.price * item.quantity).toFixed(2);
+                totalPrice += parseFloat(subtotal);
+
+                cartItemsContainer.innerHTML += `
+                    <tr>
+                        <td style="padding: 10px; border-bottom: 1px solid #ddd;">${item.name}</td>
+                        <td style="padding: 10px; border-bottom: 1px solid #ddd;">$${item.price}</td>
+                        <td style="padding: 10px; border-bottom: 1px solid #ddd;">
+                            <button onclick="changeQuantity(${index}, -1)" style="padding: 5px 10px; background: #dc3545; color: white; border: none; border-radius: 3px; cursor: pointer;">-</button>
+                            ${item.quantity}
+                            <button onclick="changeQuantity(${index}, 1)" style="padding: 5px 10px; background: #28a745; color: white; border: none; border-radius: 3px; cursor: pointer;">+</button>
+                        </td>
+                        <td style="padding: 10px; border-bottom: 1px solid #ddd;">$${subtotal}</td>
+                        <td style="padding: 10px; border-bottom: 1px solid #ddd;">
+                            <button onclick="removeItem(${index})" style="padding: 5px 10px; background: #ff4d4d; color: white; border: none; border-radius: 3px; cursor: pointer;">❌</button>
+                        </td>
+                    </tr>
+                `;
+            });
+
+            document.getElementById("total-price").innerText = totalPrice.toFixed(2);
+        }
+
+        function changeQuantity(index, change) {
+            if (cart[index].quantity + change > 0) {
+                cart[index].quantity += change;
+            }
+            updateCart();
+        }
+
+        function removeItem(index) {
+            cart.splice(index, 1);
+            updateCart();
+        }
+
+        document.getElementById("checkout-btn").addEventListener("click", function () {
+            document.getElementById("checkout-form").style.display = "block";
+        });
+
+        function submitOrder() {
+            let name = document.getElementById("name").value;
+            let email = document.getElementById("email").value;
+            let address = document.getElementById("address").value;
+
+            if (name === "" || email === "" || address === "") {
+                alert("Please fill in all the fields.");
+                return;
+            }
+
+            alert("Order placed successfully!");
+        }
+
+        updateCart();
+    </script>
+</body>
+</html>
